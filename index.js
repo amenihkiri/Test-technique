@@ -1,4 +1,3 @@
-
 // importing the express module
 const express= require("express");
 
@@ -6,12 +5,21 @@ const express= require("express");
 const app=express()
 
 
-// necessary for the PUT and POST methods so we can read the body of the request as a json format
+// Middelwares : necessary for the PUT and POST methods so we can read the body of the request as a json format
 app.use(express.json());
 
+// Connect the Data Base
+
+
+// Routes 
 
 
 // setting the enviroment on a Localhost 5000 or a default port 
 const port=process.env.PORT || 5000
-app.listen(port,()=>console.log(`server is running on port ${port}`))
+
+
+app.listen(port, err => {
+    if (err) console.log("Error! : Server is not Running");
+    console.log(`Server is Running on ${port}....`);
+  });
  
