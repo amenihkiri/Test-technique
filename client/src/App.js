@@ -4,13 +4,16 @@ import './App.css';
 import MyModal from "./components/MyModal"
 
 import Table from "./components/Table"
+
+
+
 function App() {
   return (
     <div className="App">
       <h1> Instructor List </h1>
-      <h5> instructor Management /tunis</h5>
+      <h6> Instructor Management /tunis</h6>
       <MyModal />
-     <Table />
+      <Table />
     </div>
   );
 }
