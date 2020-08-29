@@ -75,7 +75,7 @@ function EditModal ({editInstructor,person}) {
           />
            <TextField
             value={input.nbTracks}
-           name=" nbTracks"
+           name="nbTracks"
             autoFocus
             margin="dense"
             id="name"
