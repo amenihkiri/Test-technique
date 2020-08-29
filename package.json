@@ -2,13 +2,19 @@
   "name": "test-technique",
   "version": "1.0.0",
   "description": "test-technique",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "concurrently": "^5.3.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2"
   }
 }
