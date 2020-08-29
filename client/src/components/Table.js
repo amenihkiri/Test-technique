@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux" ;
-import EditIcon from '@material-ui/icons/Edit';
+import EditModal from "./EditModal";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {getInstructors,deleteInstructor} from "../JS/actions/actions";
 import MyModal from "./MyModal" ;
@@ -38,9 +38,6 @@ function InstructorTable({getInstructors,deleteInstructor,instructors}) {
         console.log(instructors)
       },[getInstructors])
    
-const handleEdit=(el)=>{
-  return <MyModal person={el}/>
-}
 
 
   const classes = useStyles();
@@ -54,7 +51,7 @@ const handleEdit=(el)=>{
           <TableRow>
             <TableCell>Instructor</TableCell>
             <TableCell align="right">Date </TableCell>
-            <TableCell align="right">time table</TableCell>
+            <TableCell align="right">Time table</TableCell>
             <TableCell align="right">Number of tracks</TableCell>
             <TableCell align="right">actions</TableCell>
           </TableRow>
@@ -70,7 +67,7 @@ const handleEdit=(el)=>{
               <TableCell align="right">{el.timeTable}</TableCell>
               <TableCell align="right">{el.nbTracks}</TableCell>
               <TableCell align="right">
-                  <EditIcon onClick={()=>handleEdit(el)}/>
+              <EditModal person={el}/>
                   <HighlightOffIcon onClick={()=>deleteInstructor(el._id)} />
                   </TableCell>
             </TableRow>

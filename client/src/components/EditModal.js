@@ -6,18 +6,18 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {addInstructor} from "../JS/actions/actions";
+import {editInstructor} from "../JS/actions/actions";
 import {connect} from "react-redux" ;
+import EditIcon from '@material-ui/icons/Edit';
 
 
-
-function MyModal ({addInstructor}) {
+function EditModal ({editInstructor,person}) {
   const [open, setOpen] = React.useState(false);
- 
+  console.log(person)
   const [input, setInput] = React.useState({
-      instructor:"",
-      timeTable:"",
-      nbTracks :1
+      instructor:person.instructor,
+      timeTable:person.timeTable,
+      nbTracks :person.nbTracks
 
   });
   function handleChange(evt) {
@@ -37,15 +37,14 @@ function MyModal ({addInstructor}) {
   };
   const handleCloses = () => {
     setOpen(false);
-    addInstructor(input)
+    editInstructor(person._id,input)
   };
 
 
   return (
     <div>
-      <Button variant="outlined" color="primary" back onClick={handleClickOpen}>
-    Add New Instructor
-      </Button>
+   
+      <EditIcon onClick={handleClickOpen} />
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
@@ -53,6 +52,7 @@ function MyModal ({addInstructor}) {
           
           </DialogContentText>
           <TextField
+          value={input.instructor}
             autoFocus
             name="instructor"
             margin="dense"
@@ -63,6 +63,7 @@ function MyModal ({addInstructor}) {
             fullWidth
           />
            <TextField
+            value={input.timeTable}
             name="timeTable"
             autoFocus
             margin="dense"
@@ -73,6 +74,7 @@ function MyModal ({addInstructor}) {
             fullWidth
           />
            <TextField
+            value={input.nbTracks}
            name=" nbTracks"
             autoFocus
             margin="dense"
@@ -88,11 +90,11 @@ function MyModal ({addInstructor}) {
            close
           </Button>
           <Button onClick={handleCloses} color="primary">
-           ADD
+          save changes
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
-export default connect (null, {addInstructor})(MyModal)
+export default connect (null, {editInstructor})(EditModal)

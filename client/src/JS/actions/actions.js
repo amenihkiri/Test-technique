@@ -29,17 +29,7 @@ export const editInstructor=(id,updatedInstructor)=>dispatch=>{
 .catch(err=>console.log(err))
 
 }
-// export const getInstructors = () => async (dispatch) => {
-//         dispatch({
-//           type: GET_INSTRUCTORS,
-//         });
-//         try {
-//             const instructors = await axios.get('/instructors')
-         
-//         } catch (error) {
-//             console.log(error)  
-//         }
-//       };
+
 
 
     
