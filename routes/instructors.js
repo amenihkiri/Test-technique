@@ -8,14 +8,14 @@ router.post("/" , async (req, res)=>{
     const{instructor,date,timeTable,nbTracks}=req.body 
 
     try {
-      const newinstructor=new Instructor({
+      const newInstructor=new Instructor({
         instructor,
         date,
         timeTable,
         nbTracks
     })
-    await newinstructor.save() 
-    res.send(newinstructor)
+    await newInstructor.save() 
+    res.send(newInstructor)
       
     } catch (error) {
       console.log(error)
@@ -56,12 +56,8 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
    try {
-    
     const deletedInstructor = await Instructor.findByIdAndDelete({ _id: id });
-
-    
-     res.json(deletedInstructor)
-  
+    res.json(deletedInstructor)
 
   } catch (error) {
     res.status(500)

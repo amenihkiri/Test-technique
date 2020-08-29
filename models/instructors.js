@@ -7,10 +7,11 @@ const InstructorSchema= new Schema ({
         type: String,
         required: true
     },
-    // date : {
-    //     type: Date,
-    //     required: true
-    // },
+    date : {
+        type: Date,
+        required: true,
+        default:Date.now()
+    },
     timeTable :{
         type: String,
         required: true 
