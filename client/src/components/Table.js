@@ -8,8 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux" ;
-
-import {getInstructors} from "../JS/actions/actions";
+import EditIcon from '@material-ui/icons/Edit';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import {getInstructors,deleteInstructor} from "../JS/actions/actions";
+import MyModal from "./MyModal" ;
 
 const useStyles = makeStyles({
   table: {
@@ -28,7 +30,7 @@ const rows = [
 ];
 
 
-function InstructorTable({getInstructors,instructors}) {
+function InstructorTable({getInstructors,deleteInstructor,instructors}) {
 
     useEffect(() => {
     
@@ -36,7 +38,9 @@ function InstructorTable({getInstructors,instructors}) {
         console.log(instructors)
       },[getInstructors])
    
-
+const handleEdit=(el)=>{
+  return <MyModal person={el}/>
+}
 
 
   const classes = useStyles();
@@ -45,11 +49,11 @@ function InstructorTable({getInstructors,instructors}) {
       
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="caption table">
-        <caption>A basic table example with a caption</caption>
+        <caption>table of instructors</caption>
         <TableHead>
           <TableRow>
-            <TableCell>instructor</TableCell>
-            <TableCell align="right">date</TableCell>
+            <TableCell>Instructor</TableCell>
+            <TableCell align="right">Date </TableCell>
             <TableCell align="right">time table</TableCell>
             <TableCell align="right">Number of tracks</TableCell>
             <TableCell align="right">actions</TableCell>
@@ -65,7 +69,10 @@ function InstructorTable({getInstructors,instructors}) {
               <TableCell align="right">{el.date}</TableCell>
               <TableCell align="right">{el.timeTable}</TableCell>
               <TableCell align="right">{el.nbTracks}</TableCell>
-           
+              <TableCell align="right">
+                  <EditIcon onClick={()=>handleEdit(el)}/>
+                  <HighlightOffIcon onClick={()=>deleteInstructor(el._id)} />
+                  </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -84,4 +91,4 @@ return { instructors: state.instructors}
 
 
 // connect react to redux 
-export default connect (mapStateToProps, {getInstructors})(InstructorTable)
+export default connect (mapStateToProps, {getInstructors,deleteInstructor})(InstructorTable)
