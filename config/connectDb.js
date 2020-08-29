@@ -1,10 +1,14 @@
-const mongoose=require('mongoose')
-// const config=require('config')
-const mongoUri=require("./default.json");
 
-const connectDb = async () => {
+const mongoose= require("mongoose");
+const config=require("config");
+
+
+
+const MONGO_URL=config.get("MONGO_URL");
+
+const connectDB = async () => {
     try {
-      await mongoose.connect(mongoUri, {
+      await mongoose.connect(MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
@@ -13,16 +17,5 @@ const connectDb = async () => {
       console.error(error);
     }
   };
-  module.exports=connectDb
-
-// const connectDB=()=>{
-
-
-//     mongoose.connect(config.get("mongoUri"))
-//     .then(()=> console.log("mongoose connected"))
-//     .catch(err=>console.log('err'))
-// }
-
-//     module.exports=connectDB
-
-
+ 
+  module.exports=connectDB

@@ -10,10 +10,10 @@ const app=express()
 app.use(express.json());
 
 // Connect the Data Base
-connectDb;
+connectDb();
 
 // Routes 
-app.use("/instructors",require("./routes/instructor"))
+app.use("/instructors",require("./routes/instructors"))
 
 // setting the enviroment on a Localhost 5000 or a default port 
 const port=process.env.PORT || 5000

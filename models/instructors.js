@@ -21,4 +21,4 @@ required :true
    }
 
 })
-module.exports= Instructor=mongoose.model("instructor",InstructorSchema)
+module.exports= Instructor=mongoose.model("instructors",InstructorSchema)
