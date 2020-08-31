@@ -1,24 +1,22 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {editInstructor} from "../JS/actions/actions";
-import {connect} from "react-redux" ;
-import EditIcon from '@material-ui/icons/Edit';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { editInstructor } from "../JS/actions/actions";
+import { connect } from "react-redux";
+import EditIcon from "@material-ui/icons/Edit";
 
-
-function EditModal ({editInstructor,person}) {
+function EditModal({ editInstructor, person }) {
   const [open, setOpen] = React.useState(false);
-  console.log(person)
+  console.log(person);
   const [input, setInput] = React.useState({
-      instructor:person.instructor,
-      timeTable:person.timeTable,
-      nbTracks :person.nbTracks
-
+    instructor: person.instructor,
+    timeTable: person.timeTable,
+    nbTracks: person.nbTracks,
   });
   function handleChange(evt) {
     const value = evt.target.value;
@@ -37,22 +35,22 @@ function EditModal ({editInstructor,person}) {
   };
   const handleCloses = () => {
     setOpen(false);
-    editInstructor(person._id,input)
+    editInstructor(person._id, input);
   };
-
 
   return (
     <div>
-   
-      <EditIcon onClick={handleClickOpen} />
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <EditIcon style={{ color: "#DAA520" }} onClick={handleClickOpen} />
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-          
-          </DialogContentText>
+          <DialogContentText></DialogContentText>
           <TextField
-          value={input.instructor}
+            value={input.instructor}
             autoFocus
             name="instructor"
             margin="dense"
@@ -62,7 +60,7 @@ function EditModal ({editInstructor,person}) {
             type="text"
             fullWidth
           />
-           <TextField
+          <TextField
             value={input.timeTable}
             name="timeTable"
             autoFocus
@@ -73,9 +71,9 @@ function EditModal ({editInstructor,person}) {
             type="text"
             fullWidth
           />
-           <TextField
+          <TextField
             value={input.nbTracks}
-           name="nbTracks"
+            name="nbTracks"
             autoFocus
             margin="dense"
             id="name"
@@ -87,14 +85,14 @@ function EditModal ({editInstructor,person}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-           close
+            close
           </Button>
           <Button onClick={handleCloses} color="primary">
-          save changes
+            save changes
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
-export default connect (null, {editInstructor})(EditModal)
+export default connect(null, { editInstructor })(EditModal);

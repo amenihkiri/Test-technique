@@ -1,8 +1,16 @@
 
-h1{
-    color: #393c40;
-    
+.App {
+  margin: 100px;
+ 
 }
-h6{
-color : gray
+h1 {
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 17px;
+  color: #18204b;
+}
+h6 {
+  font-size: .625rem;
+    font-weight: 500;
+    color: #bcbcbf;
 }

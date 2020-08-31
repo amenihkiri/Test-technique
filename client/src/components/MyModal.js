@@ -1,24 +1,21 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {addInstructor} from "../JS/actions/actions";
-import {connect} from "react-redux" ;
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { addInstructor } from "../JS/actions/actions";
+import { connect } from "react-redux";
 
-
-
-function MyModal ({addInstructor}) {
+function MyModal({ addInstructor }) {
   const [open, setOpen] = React.useState(false);
- 
-  const [input, setInput] = React.useState({
-      instructor:"",
-      timeTable:"",
-      nbTracks :1
 
+  const [input, setInput] = React.useState({
+    instructor: "",
+    timeTable: "",
+    nbTracks: 1,
   });
   function handleChange(evt) {
     const value = evt.target.value;
@@ -37,21 +34,34 @@ function MyModal ({addInstructor}) {
   };
   const handleCloses = () => {
     setOpen(false);
-    addInstructor(input)
+    addInstructor(input);
   };
-
 
   return (
     <div>
-      <Button variant="outlined" color="primary" back onClick={handleClickOpen}>
-    Add New Instructor
+      <Button
+        style={{
+          color: "white",
+          backgroundColor: "#170ff0",
+          textAlign: "center",
+          fontSize: ".8125rem",
+          padding:"10px",
+          marginBottom:"25px"
+        }}
+        variant="outlined"
+        color="primary"
+        onClick={handleClickOpen}
+      >
+        + Add New Instructor
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-          
-          </DialogContentText>
+          <DialogContentText></DialogContentText>
           <TextField
             autoFocus
             name="instructor"
@@ -62,7 +72,7 @@ function MyModal ({addInstructor}) {
             type="text"
             fullWidth
           />
-           <TextField
+          <TextField
             name="timeTable"
             autoFocus
             margin="dense"
@@ -72,8 +82,8 @@ function MyModal ({addInstructor}) {
             type="text"
             fullWidth
           />
-           <TextField
-           name=" nbTracks"
+          <TextField
+            name=" nbTracks"
             autoFocus
             margin="dense"
             id="name"
@@ -85,14 +95,14 @@ function MyModal ({addInstructor}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-           close
+            close
           </Button>
           <Button onClick={handleCloses} color="primary">
-           ADD
+            ADD
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
-export default connect (null, {addInstructor})(MyModal)
+export default connect(null, { addInstructor })(MyModal);
