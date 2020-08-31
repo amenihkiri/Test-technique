@@ -18,9 +18,10 @@ export function deleteInstructor(id) {
     id,
   };
 }
-export function editInstructor(updatedInstructor) {
+export function editInstructor(id, updatedInstructor) {
   return {
     type: CONSTANTS.EDIT_INSTRUCTOR_REQUEST,
+    id,
     updatedInstructor,
   };
 }
