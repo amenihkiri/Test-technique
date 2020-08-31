@@ -32,10 +32,12 @@ function MyModal({ addInstructor }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleCloses = () => {
     setOpen(false);
     addInstructor(input);
   };
+  
 
   return (
     <div>

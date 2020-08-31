@@ -1,6 +1,6 @@
 // importing the express module
 const express = require("express");
-
+const cors = require("cors");
 const connectDb = require("./config/connectDb");
 
 // having acces to differents methods
@@ -8,6 +8,7 @@ const app = express();
 
 // Middelwares : necessary for the PUT and POST methods so we can read the body of the request as a json format
 app.use(express.json());
+app.use(cors());
 
 // Connect the Data Base
 connectDb();

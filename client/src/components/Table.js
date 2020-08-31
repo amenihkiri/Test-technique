@@ -12,7 +12,6 @@ import EditModal from "./EditModal";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { getInstructors, deleteInstructor } from "../JS/actions/actions";
 
-
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -34,14 +33,14 @@ function InstructorTable({ getInstructors, deleteInstructor, instructors }) {
     getInstructors();
     console.log(instructors);
   }, [getInstructors]);
-
+  console.log("instructors list", instructors);
   const classes = useStyles();
-  console.log(instructors);
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="caption table">
         <caption>table of instructors</caption>
-        <TableHead style={{backgroundColor:"#F8F8FF"}}>
+        <TableHead style={{ backgroundColor: "#F8F8FF" }}>
           <TableRow>
             <TableCell>
               <h4>Instructor</h4>
@@ -73,9 +72,15 @@ function InstructorTable({ getInstructors, deleteInstructor, instructors }) {
               <TableCell align="center">{el.date}</TableCell>
               <TableCell align="center">{el.timeTable}</TableCell>
               <TableCell align="center">{el.nbTracks}</TableCell>
-              <TableCell style={{display:"flex",justifyContent:"space-around"}} align="center">
+              <TableCell
+                style={{ display: "flex", justifyContent: "space-around" }}
+                align="center"
+              >
                 <EditModal person={el} />
-                <HighlightOffIcon style={{ color: "#170ff0" }}onClick={() => deleteInstructor(el._id)} />
+                <HighlightOffIcon
+                  style={{ color: "#170ff0" }}
+                  onClick={() => deleteInstructor(el._id)}
+                />
               </TableCell>
             </TableRow>
           ))}
@@ -84,7 +89,7 @@ function InstructorTable({ getInstructors, deleteInstructor, instructors }) {
     </TableContainer>
   );
 }
-// redux 
+// redux
 const mapStateToProps = (state) => {
   return { instructors: state.instructors };
 };

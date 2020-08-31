@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <h1> Instructor List </h1>
       <h6> Instructor Management /tunis</h6>
-      
       <MyModal />
       <Table />
     </div>
