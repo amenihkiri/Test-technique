@@ -14,15 +14,28 @@ const InstructorReducer = (state = initialState, action) => {
       case CONSTANTS.DELETE_INSTRUCTOR_REQUEST:
       case CONSTANTS.EDIT_INSTRUCTOR_REQUEST:
         draft.local.instructorsLoading = true;
-        return;
+        break;
 
       case CONSTANTS.GET_INSTRUCTORS_SUCCESS:
-        // case CONSTANTS.ADD_INSTRUCTOR_SUCCESS:
-        // case CONSTANTS.DELETE_INSTRUCTOR_SUCCESS:
-        // case CONSTANTS.EDIT_INSTRUCTOR_SUCCESS:
         draft.instructors = action.payload;
         draft.local.instructorsLoading = false;
-        return;
+        break;
+
+      case CONSTANTS.ADD_INSTRUCTOR_SUCCESS:
+        draft.instructors.push(action.payload);
+        break;
+
+      case CONSTANTS.DELETE_INSTRUCTOR_SUCCESS:
+        draft.instructors = draft.instructors.filter(
+          (el) => el._id !== action.payload
+        );
+        break;
+
+      case CONSTANTS.EDIT_INSTRUCTOR_SUCCESS:
+        draft.instructors = draft.instructors.map((el) =>
+          el._id === action.payload ? action.payload : el
+        );
+        break;
 
       case CONSTANTS.GET_INSTRUCTORS_FAILURE:
       case CONSTANTS.ADD_INSTRUCTOR_FAILURE:
