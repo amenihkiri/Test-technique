@@ -35,9 +35,10 @@ function EditModal({ editInstructor, person }) {
   };
   const handleCloses = () => {
     setOpen(false);
-  {console.log(person._id)}
+    {
+      console.log(person._id);
+    }
     editInstructor(person._id, input);
-    
   };
 
   return (

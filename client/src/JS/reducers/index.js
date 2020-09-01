@@ -1,6 +1,7 @@
 import * as CONSTANTS from "../constants/actions-types";
 import produce from "immer";
 
+
 const initialState = {
   instructors: [],
   local: { instructorsLoading: false, instructorsError: false },
@@ -33,7 +34,7 @@ const InstructorReducer = (state = initialState, action) => {
 
       case CONSTANTS.EDIT_INSTRUCTOR_SUCCESS:
         draft.instructors = draft.instructors.map((el) =>
-          el._id === action.payload ? action.payload : el
+          el._id === action.payload._id ? action.payload : el
         );
         break;
 
@@ -51,53 +52,3 @@ const InstructorReducer = (state = initialState, action) => {
   return nextState;
 };
 export default InstructorReducer;
-
-// import * as CONSTANTS from "../constants/actions-types";
-// import produce from "immer";
-
-// const initialState = {
-//   loading: false,
-//   error: false,
-//   instructors: [],
-// };
-
-// const InstructorReducer = (state = initialState, action) => {
-//   produce(state, (draft) => {
-//     switch (action.type) {
-//       case CONSTANTS.GET_INSTRUCTORS_REQUEST:
-//         draft.loading = true;
-//         break;
-
-//       case CONSTANTS.GET_INSTRUCTORS_SUCCESS:
-//         draft.instructors = action.payload;
-//         draft.loading = false;
-//         break;
-
-//       case CONSTANTS.GET_INSTRUCTORS_FAILURE:
-//         draft.error = true;
-//         break;
-
-//       default:
-//         return draft;
-//     }
-//   });
-// };
-// export default InstructorReducer;
-
-// import { GET_INSTRUCTORS } from "../constants/actions-types";
-
-// const initialState = {
-//   instructors: [],
-// };
-
-// const InstructorReducer = (state = initialState, action) => {
-
-//   switch (action.type) {
-//     case GET_INSTRUCTORS:
-//       return { ...state, instructors: action.payload };
-//     default:
-//       return state;
-//   }
-
-// };
-// export default InstructorReducer;

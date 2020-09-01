@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
     const updatedInstructor = await Instructor.findOneAndUpdate(
       { _id: id },
       { $set: req.body },
-      { new: true } 
+      { new: true }
     );
     res.json(updatedInstructor);
   } catch (error) {

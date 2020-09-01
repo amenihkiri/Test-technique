@@ -67,7 +67,8 @@ export function* deleteInstructorWatcher() {
 export function* editInstructorWatcher() {
   yield takeEvery(CONSTANTS.EDIT_INSTRUCTOR_REQUEST, editInstructor);
 }
-//
+
+//root Saga
 export default function* rootSaga() {
   yield all([
     getInstructorsWatcher(),
